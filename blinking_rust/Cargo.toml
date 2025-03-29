@@ -1,0 +1,13 @@
+[package]
+name = "blinking_rust"
+description = "A simple blinking LED example for the micro:bit V2 (Writing Rust on board)"
+authors = ["Burak Selim Şenyurt"]
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+microbit-v2 = "0.15.1"
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.5"
+embedded-hal = "1.0.0"
+panic-halt = "1.0.0"
