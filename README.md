@@ -62,7 +62,67 @@ rustup target add thumbv7em-none-eabihf
 
 ### First Contact
 
+Bu örnek düzenli aralıklarla Windows makinedeki terminal ekranına mesaj göndermektedir.
+
+```bash
+# Kod kontrolü
+cargo check
+
+# Flashing (Cihaza dağıtım)
+cargo embed
+```
+
+Beklenen çıktı.
+
+![First Contact Runtime](./images/MicroBit_03.png)
+
 ### Debugging
+
+Terminal bazlı debug operasyonlarında GDB kullanılır.
+
+```bash
+# İlk terminalde aşağıdaki komut çalıştırılır
+cargo embed
+
+# İkinci bir terminalde debug server'a bağlanılarak ilerlenir
+arm-none-eabi-gdb .\target\thumbv7em-none-eabihf\debug\debugging
+
+# gdb terminali açıldıktan sonra debug server'a bağlanılır
+target remote :1337
+
+# main.rs içerisinde bir satıra breakpoint eklemek için
+break main.rs:12
+
+# breakpoint noktasına gitmek için
+continue
+
+# local değişkenlerin durumunu görmek için
+info locals
+
+# Değişken değerini yazdırmak için
+print counter
+# Adresini öğrenmek için
+print &counter
+# Değer set etmek için
+set var counter=0
+
+# breakpoint'leri görmek için
+info breakpoints
+
+# ilk eklenen 1 numaralı breakpoint'i silmek için
+delete 1
+
+# Microdenetleyici register adreslerini görmek için
+info registers
+
+# Mikrodenetleyiciyi resetlemek için
+monitor reset
+
+# debugger'dan çıkmak için
+quit
+```
+
+![Debugging](./images/MicroBit_04.png)
 
 ### Blinking Led
 
