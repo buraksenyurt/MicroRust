@@ -10,6 +10,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
         - [Fist Contact](#first-contact)
         - [Debugging](#debugging)
         - [Blinking Led](#blinking-led)
+        - [Blinking Led v2](#blinking-led-v2)
         - [Blinking Rust](#blinking-rust)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
@@ -81,7 +82,11 @@ Beklenen çıktı.
 Terminal bazlı debug operasyonlarında GDB kullanılır.
 
 ```bash
-# İlk terminalde aşağıdaki komut çalıştırılır
+# Klasik kontroller
+cargo check
+cargo build
+
+# İlk terminalde aşağıdaki komut çalıştırılır ve flashing yapılır
 cargo embed
 
 # İkinci bir terminalde debug server'a bağlanılarak ilerlenir
@@ -126,7 +131,31 @@ quit
 
 ### Blinking Led
 
+Bu örnekte 5x5 Led matrisinin ortasındaki led ışığının saniyede bir yanıp sönmesi sağlanır. Doğrudan mikrodenetleyicinin GPIO adresleri üzerinde işlem yapılarak ilerlenmiştir.
+
+```bash
+cargo embed
+```
+
+Beklenen çıktı ortadaki led ışığının saniyede bir yanıp sönmesidir.
+
+### Blinking Led v2
+
+Blinking Led örneğindekinden farklı olarak bu örnekte Hardware Abstraction Layer crate'ler kullanılmıştır.
+
+```bash
+cargo embed
+```
+
+Beklenen çıktı ortadaki led ışığının yaklaşık 1.5 saniyelik sürelerde yanıp sönmesidir.
+
 ### Blinking Rust
+
+Bu örnekte A düğmesine basıldığında LED matriste sırasyıla R, U , S ve T harfleri görünür.
+
+```bash
+cargo embed
+```
 
 ## Mini Sözlük
 
