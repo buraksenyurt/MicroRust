@@ -1,0 +1,13 @@
+[package]
+name = "blinking_led_v2"
+description = "A simple blinking LED example for the BBC Micro:bit V 2.2 microcontroller"
+authors = ["Burak Selim Şenyurt"]
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.5"
+embedded-hal = "1.0.0"
+microbit-v2 = "0.15.1"
+panic-halt = "1.0.0"
