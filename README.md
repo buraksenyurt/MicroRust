@@ -14,6 +14,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
         - [Blinking Rust](#blinking-rust)
         - [Beep](#beep)
         - [Uart](#uart)
+        - [Server](#server)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
 
@@ -191,6 +192,18 @@ COM portuna gelen mesajları görmek için PuTTY uygulamasından yararlanılabil
 ![PuTTY](./images/MicroBit_05.png)
 
 ![UART Runtime](./images/MicroBit_07.png)
+
+### Server
+
+Bu örnekte mikrodenetleyici bir server rolünü üstlenir. Bilgisayar terminalinden gönderilen komutlara göre farklı işlemler yapar. Komut gönderimi için bir önceki uart isimli örnekte olduğu gibi PuTTY ile COM3 portuna bağlanılan bir terminal açılır. Terminalde h, o ve r gibi tek karakterler gönderildiğinde mikrodenetleyici bu komutlara karşılık işlemler yapar. O harfi tuşlandığında LED matrix'te gülen surat yanar, r harfine basılırsa LED resetlenir, h harfi ile yardım menüsü okunur.
+
+```bash
+cargo embed
+```
+
+Beklenen çalışma zamanı çıktısı;
+
+![Server runtime](./images/MicroBit_08.png)
 
 ## Mini Sözlük
 
