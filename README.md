@@ -7,14 +7,15 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
     - [Cihaz Hakkında](#cihaz-hakkında)
     - [Gerekli Kurulumlar](#gerekli-kurulumlar)
     - [Örnekler](#örnekler)
-        - [Fist Contact](#first-contact)
-        - [Debugging](#debugging)
-        - [Blinking Led](#blinking-led)
-        - [Blinking Led v2](#blinking-led-v2)
-        - [Blinking Rust](#blinking-rust)
-        - [Beep](#beep)
-        - [Uart](#uart)
-        - [Server](#server)
+      - [Fist Contact](#first-contact)
+      - [Debugging](#debugging)
+      - [Blinking Led](#blinking-led)
+      - [Blinking Led v2](#blinking-led-v2)
+      - [Blinking Rust](#blinking-rust)
+      - [Beep](#beep)
+      - [Uart](#uart)
+      - [Server](#server)
+      - [Accelerometer](#accelerometer)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
 
@@ -205,6 +206,16 @@ Beklenen çalışma zamanı çıktısı;
 
 ![Server runtime](./images/MicroBit_08.png)
 
+### Accelerometer
+
+Bu örnekte microdenetleyici üzerinde yer alan ivme ölçer'den x,y,z değerlerinin okunması işlemi gerçekleştirilmekte ve bu bilgilerden yararlanarak hız ölçülmeye çalışılmaktadır.
+
+```bash
+cargo embed
+```
+
+Beklenen çıktıya göre terminal ekranına ivme artışlarının ve yaklaşık bir hız değerinin yazılmazı beklenir.
+
 ## Mini Sözlük
 
 - **ADC _(Analog-to-Digital Converter)_:**  Analog sinyali dijitale çeviren dönüştürücüdür. Örneğin mikrofon sensörüne gelen veriyi dijital hale çevirmekte kullanılır.
@@ -213,7 +224,7 @@ Beklenen çalışma zamanı çıktısı;
 - **GPIO _(General Purpose Input/Output)_ :** Genel amaçlı giriş/çıkış pinleridir. LED yakmak, buton okumak, sensörlerden veri almak vb işlemlerde kullanılır. Hem giriş _(Input)_ hem de çıkış _(output)_ olarak yapılandırılabilir.
 - **UART _(Universal Asynchronous Receiver-Transmitter)_:** Mikrodenetleyicilerde sensör verilerinin aktarım işlemlerini tanımlayan bir seri iletişim protokoldür. Sadece mikrodenetleyiciler değil bilgisayarlar içinde geçerlidir.
 - **SPI _(Serial Peripheral Interface)_:** Ağırlıklı olarak yine mikrodenetleyicilerde ele alınan bir senkron ve seri haberleşme standardıdır.
-- **I2C _(Inter-Integrated Circuit)_:**
+- **I2C _(Inter-Integrated Circuit)_:** Senkronize seri haberleşme protokolüdür. Veri değiş tokuşu için data hattı ve clock line kullanır. Örneğin Microbit üzerinde yer alan [LSM303AGR](https://www.st.com/en/mems-and-sensors/lsm303agr.html) bileşeni manyetometre ve ivmeölçer hareket sensörlerini barındırır. İletişim için I2C arayüzü sağlar. Dolayısıyla sensörlerden anlık verileri I2C protokolü üstünden kullanabiliriz.
 - **HAL _(Hardware Abstraction Layer)_ :** Donanım seviyesindeki enstrümanlarla konuşmayı kolaylaştıran bir arayüz olarak düşünülebilir. Örneğin GPIO pinlerine doğrudan erişmek yerine detaylardan uzak ve kolay kullanılabilir bir soyutlama sağlar. Örneğin pin registerlarına doğrudan yazmak yerine pin.set_high gibi anlamlı fonksiyonlar sağlar. Bazen BSP ile karıştırılabilir.[nrf52833-hal](https://crates.io/crates/nrf52833-hal) örnek olarak verilebilir. Bu HAL örneğin belli mikrodenetleyicileri hedefler. Birde daha genel soyutlama sağlayan [embedded-hal](https://crates.io/crates/embedded-hal) gibi küfeler vardır. Bunu şöyle de düşünebiliriz; embedded-hal genel arayüz tanımlamalarını içerir _(traits)_, nrf52833-hal ise nRF52833'e özel olarak ilgil trait'leri gerçekten implemente eder. Dolayısıyla cihaza özgü komutlar da içerebilir.
 - **Peripheral :** Mikrodenetleyicinin içinde bulunan **GPIO**, **UART**, **SPI**, **I2C**, **Timer**, **ADC** gibi birimlerdir. Her biri ayrı bir periferik modül olarak kabul edilir.
 - **PAC _(Peripheral Access Crate)_ :** Mikrodenetleyici üreticisinin sağladığı register haritalarını, API'leri otomatik olarak Rust koduna çeviren paketlerdir. HAL kütüphaneleri genelde PAC modülleri üzerine kurulur.
