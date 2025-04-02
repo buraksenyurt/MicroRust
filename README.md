@@ -208,13 +208,15 @@ Beklenen çalışma zamanı çıktısı;
 
 ### Accelerometer
 
-Bu örnekte microdenetleyici üzerinde yer alan ivme ölçer'den x,y,z değerlerinin okunması işlemi gerçekleştirilmekte ve bu bilgilerden yararlanarak hız ölçülmeye çalışılmaktadır.
+Bu örnekte microdenetleyici üzerinde yer alan ivme ölçer'den x,y,z değerlerinin okunması ve bu bilgilerden yararlanarak hız ölçülmesi gerçekleştirilmektedir.
 
 ```bash
 cargo embed
 ```
 
-Beklenen çıktıya göre terminal ekranına ivme artışlarının ve yaklaşık bir hız değerinin yazılmazı beklenir.
+Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme artışlarının ve yaklaşık bir hız değerinin yazılmazı beklenir.
+
+![Speed](./images/MicroBit_09.png)
 
 ## Mini Sözlük
 
