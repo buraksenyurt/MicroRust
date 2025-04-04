@@ -218,6 +218,38 @@ Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme ar
 
 ![Speed](./images/MicroBit_09.png)
 
+### Thermometer V1
+
+Bu örnek micro:bit denetleyicisi üzerindeki LSM303AGR çipinin sıcaklığını ölçümler.
+
+```bash
+cargo embed
+```
+
+Beklenen çıktı mikrodenetleyici üzerindeki A butonuna basıldığında sıcaklık değerinin santigrat cinsidinden bilgisayar terminalinde görülmesidir.
+
+![Thermometer v1 runtime](./images/MicroBit_11.png)
+
+### Thermometer V2
+
+Bu örnekte ortam sıcaklığı üzerinde ısı sensörü bulunan MonkMakes marka board yardımıyla ölçümlemneye çalışılacaktır.
+
+![Sensor Board](./images/MicroBit_10.jpg)
+
+Board ve micro:bit arasındaki bağlantılar aşağıdaki gibidir.
+
+|Timsah Klips|Micro:bit|Sensor|
+|------------|---------|------|
+|Siyah|GND|GND|
+|Kırmızı|3V|3V|
+|Sarı|GPIO 1|Isı|
+
+```bash
+cargo embed
+```
+
+// HENÜZ TAMAMLANMADI
+
 ## Mini Sözlük
 
 - **ADC _(Analog-to-Digital Converter)_:** Analog sinyali dijitale çeviren dönüştürücüdür. Örneğin mikrofon sensörüne gelen veriyi dijital hale çevirmekte kullanılır.
@@ -235,6 +267,7 @@ Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme ar
 - **Peripheral :** Mikrodenetleyicinin içinde bulunan **GPIO**, **UART**, **SPI**, **I2C**, **Timer**, **ADC** gibi birimlerdir. Her biri ayrı bir periferik modül olarak kabul edilir.
 - **PWM _(Pulse Width Modulation)_:** PWM, **Pulse Width Modulation** anlamına gelir ve genellikle analog sinyalleri dijital sinyallere dönüştürmek için kullanılır. Bir sinyalin belirli bir süre boyunca açık kalma süresini _(duty cycle)_ kontrol ederek ortalama bir voltaj değeri oluşturur. Bu değer hoparlör gibi cihazların ses çıkışını kontrol etmek için kullanılabilir. Hatta bir **LED parlaklığını** kontrol etmek için de kullanılabilir.
 - **Reset Vector:** Mikrodenetleyici yeniden başlatıldığında _(reset)_ çalışmaya başladığı ilk bellek adresidir. Başlangıç kodu da buradan çalıştırılır. Örneklerde embed edilen kodlar bu adresten başlatılır.
+- **SAADC _(Successive Approximation Aanalog-to-Digital Converter)_ :**
 - **SPI _(Serial Peripheral Interface)_:** Ağırlıklı olarak yine mikrodenetleyicilerde ele alınan bir senkron ve seri haberleşme standardıdır.
 - **SVD _(System View Description)_:** Mikrodenetleyici üzerindeki **register** ve ilişkili bitleri tarifleyen bir harita dosyası olarak düşünülebilir. **svd2rust** gibi crate'ler bu dosyaları **parse** edebilir ve bu da **Peripherals Access Crate**'lerin oluşturulmasını kolaylaştırır. Genellikle **XML _(eXtensiable Markup Language)_** tabanlı bir dosyadır.
 - **UART _(Universal Asynchronous Receiver-Transmitter)_:** Mikrodenetleyicilerde sensör verilerinin aktarım işlemlerini tanımlayan bir seri iletişim protokoldür. Sadece mikrodenetleyiciler değil bilgisayarlar içinde geçerlidir.
