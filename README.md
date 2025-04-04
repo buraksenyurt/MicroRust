@@ -21,13 +21,13 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
 
 ## Microbit Üzerinde Geliştirme
 
-Mikrodenetleyiciler genel olarak sınırlı kapasiteye sahip, çoğunlukla işletim sistemi ile birlikte gelmeyen, çeşitli sensörler yardımıyla çevresel ortamlardan veri toplanması gibi işlerde sıklıkla kullanılan entegre kartlardır. Portatif ve ekonomik olmaları birçok düzeneğe dahil edilmelerini mümkün kılar. Mikrodenetleyiciler üzerine geliştirme yapmak için farklı programlama dilleri kullanılabilir ancak RTOS _(real-time operating system-RTOS)_ ile birlikte gelmedikleri durumlarda bare-metal programming pratiklerini uygulamak gerekir.
+Mikrodenetleyiciler genel olarak sınırlı kapasiteye sahip, çoğunlukla işletim sistemi ile birlikte gelmeyen, çeşitli sensörler yardımıyla çevresel ortamlardan veri toplanması gibi işlerde sıklıkla kullanılan entegre kartlardır. Portatif ve ekonomik olmaları birçok düzeneğe dahil edilmelerini mümkün kılar. Mikrodenetleyiciler üzerine geliştirme yapmak için farklı programlama dilleri kullanılabilir ancak **RTOS _(real-time operating system-RTOS)_** ile birlikte gelmedikleri durumlarda bare-metal programming pratiklerini uygulamak gerekir.
 
-Bu repoya konu olan [BBC micro:bit](https://microbit.org/) üzerinde Python, Scratch, Microsoft Make ile programlama yapılabileceği gibi C ve Rust gibi dillerle de geliştirme yapmak mümkündür.
+Bu repoya konu olan [BBC micro:bit](https://microbit.org/) üzerinde **Python**, **Scratch**, **Microsoft Make** ile programlama yapılabileceği gibi **C** ve **Rust** gibi dillerle de geliştirme yapmak mümkündür.
 
 ## Cihaz Hakkında
 
-Bu repodaki örnekler BBC Micro:bit v2.2 üzerinde geliştirilmektedir. ARM tabanlı Cortex işlemciye _(nRF52833, Nordic Semiconductor)_ sahip olan cihaz 512 Kb Flash ve 128 Kb Ram belleğe sahiptir.
+Bu repodaki örnekler **BBC Micro:bit v2.2** üzerinde geliştirilmektedir. **ARM** tabanlı **Cortex** işlemciye _(nRF52833, Nordic Semiconductor)_ sahip olan cihaz **512 Kb Flash** ve **128 Kb Ram** belleğe sahiptir.
 
 ![Micro:bit 00](./images/MicroBit_00.jpg)
 
@@ -35,7 +35,7 @@ Bu repodaki örnekler BBC Micro:bit v2.2 üzerinde geliştirilmektedir. ARM taba
 
 - Doğrudan Microcontroller Unit üzerinde programlama yaparken kartın donanım şema bilgilerine ihtiyaç duyulacaktır. [Kaynak](https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2.00/MicroBit_V2.0.0_S_schematic.PDF)
 
-Mikrodenetleyici USB üzerinden bilgisayara bağlanabilir. Bilgisayara bağlandıktan sonra COM3 portundan bağlı bir cihaz gibi görünür.
+Mikrodenetleyici USB üzerinden bilgisayara bağlanabilir. Bilgisayara bağlandıktan sonra **COM3** portundan bağlı bir cihaz gibi de algılanır.
 
 ```bash
 # Kontrol için
@@ -46,7 +46,7 @@ mode
 
 ## Gerekli Kurulumlar
 
-Örnekler Windows 11 işletim sistemi üzerinde geliştirilmektedir.
+Örnekler **Windows 11** işletim sistemi üzerinde geliştirilmektedir.
 
 ```bash
 # Sistemde rust'ın yüklü olduğu varsayılmıştır
@@ -145,7 +145,7 @@ Beklenen çıktı ortadaki led ışığının saniyede bir yanıp sönmesidir.
 
 ### Blinking Led v2
 
-Blinking Led örneğindekinden farklı olarak bu örnekte Hardware Abstraction Layer crate'ler kullanılmıştır.
+Blinking Led örneğindekinden farklı olarak bu örnekte **Hardware Abstraction Layer** crate'ler kullanılmıştır.
 
 ```bash
 cargo embed
@@ -175,7 +175,7 @@ Beklenen çıktı, B düğmesine basıldığında beep sesi duyulmasıdır.
 
 ### Uart
 
-UART _(Universal Asynchronous Receiver/Transmitter)_ mikrodenetleyici üzerinde yer alan bir çevresel iletişim birimidir _(Peripheral)_. Bu arabirimi kullanarak mikrodenetleyici ve bilgisayar arasında haberleşme sağlanabilir. Modül Transmitter ve Receiver için pin'lere sahiptir. Örneğin bilgisayarın COM portuna seri haberleşme protokolü üzerinden mesaj gönderilebilir veya bilgisayardan dönen mesaj okunabilir.
+**UART _(Universal Asynchronous Receiver/Transmitter)_** mikrodenetleyici üzerinde yer alan bir çevresel iletişim birimidir _(Peripheral)_. Bu arabirimi kullanarak mikrodenetleyici ve bilgisayar arasında haberleşme sağlanabilir. Modül **Transmitter** ve **Receiver** için pin'lere sahiptir. Örneğin bilgisayarın **COM** portuna seri haberleşme protokolü üzerinden mesaj gönderilebilir veya bilgisayardan dönen mesaj okunabilir.
 
 ```bash
 # Microbit bilgisayar USB kablosu ile bağlandıktan sonra
@@ -196,7 +196,7 @@ COM portuna gelen mesajları görmek için PuTTY uygulamasından yararlanılabil
 
 ### Server
 
-Bu örnekte mikrodenetleyici bir server rolünü üstlenir. Bilgisayar terminalinden gönderilen komutlara göre farklı işlemler yapar. Komut gönderimi için bir önceki uart isimli örnekte olduğu gibi PuTTY ile COM3 portuna bağlanılan bir terminal açılır. Terminalde h, o ve r gibi tek karakterler gönderildiğinde mikrodenetleyici bu komutlara karşılık işlemler yapar. O harfi tuşlandığında LED matrix'te gülen surat yanar, r harfine basılırsa LED resetlenir, h harfi ile yardım menüsü okunur.
+Bu örnekte mikrodenetleyici bir server rolünü üstlenir. Bilgisayar terminalinden gönderilen komutlara göre farklı işlemler yapar. Komut gönderimi için bir önceki **uart** isimli örnekte olduğu gibi **PuTTY** ile **COM3** portuna bağlanılan bir terminal açılır. Terminalde **h**, **o** ve **r** gibi tek karakterler gönderildiğinde mikrodenetleyici bu komutlara karşılık işlemler yapar. Örneğin **o** harfi tuşlandığında **LED matrix**'te gülen surat yanar, **r** harfine basılırsa LED resetlenir, **h** harfi ile yardım menüsü okunur.
 
 ```bash
 cargo embed
@@ -208,36 +208,36 @@ Beklenen çalışma zamanı çıktısı;
 
 ### Accelerometer
 
-Bu örnekte microdenetleyici üzerinde yer alan ivme ölçer'den x,y,z değerlerinin okunması ve bu bilgilerden yararlanarak hız ölçülmesi gerçekleştirilmektedir.
+Bu örnekte microdenetleyici üzerinde yer alan ivme ölçer'den _(Accelerometer)_ anlık **x,y,z** değerlerinin okunması ve bu bilgilerden yararlanarak hareket hızının ölçülmesi gerçekleştirilmektedir.
 
 ```bash
 cargo embed
 ```
 
-Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme artışlarının ve yaklaşık bir hız değerinin yazılmazı beklenir.
+Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme artışlarının ve yaklaşık bir hız değerinin yazılması beklenir.
 
 ![Speed](./images/MicroBit_09.png)
 
 ## Mini Sözlük
 
-- **ADC _(Analog-to-Digital Converter)_:**  Analog sinyali dijitale çeviren dönüştürücüdür. Örneğin mikrofon sensörüne gelen veriyi dijital hale çevirmekte kullanılır.
-- **BSP _(Board Support Package)_ :** Donanım kartına özel olarak geliştirilmiş başlangıç için gerekli tüm unsurları içeren paketlerin genel adıdır. Karta özel pin tanımlarını, saat ayarlarını, buton buzzer pin ayarlarını vb içerir. Örneğin Micro:bit için kullandığımız [microbit-v2](https://crates.io/crates/microbit-v2) BSP örneklerindendir. Bu tip paketler kullanılarak HAL katmanları da geliştirilebilir.
+- **ADC _(Analog-to-Digital Converter)_:** Analog sinyali dijitale çeviren dönüştürücüdür. Örneğin mikrofon sensörüne gelen veriyi dijital hale çevirmekte kullanılır.
+- **Bare Metal Programming:** İşletim sistemi olmadan doğrudan donanım üzerinde yazılım geliştirme yaklaşımının adıdır. Yazıda ele aldığımız BBC micro:bit gibi cihazlarda **no_std** ile yazılan kodlar **bare-metal** seviyede olur.
+- **BSP _(Board Support Package)_ :** Donanım kartına özel olarak geliştirilmiş başlangıç için gerekli tüm unsurları içeren paketlerin genel adıdır. Karta özel pin tanımlarını, saat ayarlarını, buton buzzer pin ayarlarını vb içerir. Örneğin **Micro:bit** kartı için kullandığımız **microbit-v2** BSP örneklerindendir. Bu tip paketler kullanılarak HAL katmanları da geliştirilebilir.
+- **Debug Probe:** Bilgisayar ile mikrodenetleyici arasındaki fiziksel **debug** bağlantısını sağlayan araçtır.
 - **ELF _(Executable and Linkable Format)_ :** Derlenen programın hedef sistemde çalıştırılabilir hale getirildiği dosya formatıdır.
-- **GPIO _(General Purpose Input/Output)_ :** Genel amaçlı giriş/çıkış pinleridir. LED yakmak, buton okumak, sensörlerden veri almak vb işlemlerde kullanılır. Hem giriş _(Input)_ hem de çıkış _(output)_ olarak yapılandırılabilir.
-- **UART _(Universal Asynchronous Receiver-Transmitter)_:** Mikrodenetleyicilerde sensör verilerinin aktarım işlemlerini tanımlayan bir seri iletişim protokoldür. Sadece mikrodenetleyiciler değil bilgisayarlar içinde geçerlidir.
-- **SPI _(Serial Peripheral Interface)_:** Ağırlıklı olarak yine mikrodenetleyicilerde ele alınan bir senkron ve seri haberleşme standardıdır.
-- **I2C _(Inter-Integrated Circuit)_:** Senkronize seri haberleşme protokolüdür. Veri değiş tokuşu için data hattı ve clock line kullanır. Örneğin Microbit üzerinde yer alan [LSM303AGR](https://www.st.com/en/mems-and-sensors/lsm303agr.html) bileşeni manyetometre ve ivmeölçer hareket sensörlerini barındırır. İletişim için I2C arayüzü sağlar. Dolayısıyla sensörlerden anlık verileri I2C protokolü üstünden kullanabiliriz.
-- **HAL _(Hardware Abstraction Layer)_ :** Donanım seviyesindeki enstrümanlarla konuşmayı kolaylaştıran bir arayüz olarak düşünülebilir. Örneğin GPIO pinlerine doğrudan erişmek yerine detaylardan uzak ve kolay kullanılabilir bir soyutlama sağlar. Örneğin pin registerlarına doğrudan yazmak yerine pin.set_high gibi anlamlı fonksiyonlar sağlar. Bazen BSP ile karıştırılabilir.[nrf52833-hal](https://crates.io/crates/nrf52833-hal) örnek olarak verilebilir. Bu HAL örneğin belli mikrodenetleyicileri hedefler. Birde daha genel soyutlama sağlayan [embedded-hal](https://crates.io/crates/embedded-hal) gibi küfeler vardır. Bunu şöyle de düşünebiliriz; embedded-hal genel arayüz tanımlamalarını içerir _(traits)_, nrf52833-hal ise nRF52833'e özel olarak ilgil trait'leri gerçekten implemente eder. Dolayısıyla cihaza özgü komutlar da içerebilir.
-- **Peripheral :** Mikrodenetleyicinin içinde bulunan **GPIO**, **UART**, **SPI**, **I2C**, **Timer**, **ADC** gibi birimlerdir. Her biri ayrı bir periferik modül olarak kabul edilir.
-- **PAC _(Peripheral Access Crate)_ :** Mikrodenetleyici üreticisinin sağladığı register haritalarını, API'leri otomatik olarak Rust koduna çeviren paketlerdir. HAL kütüphaneleri genelde PAC modülleri üzerine kurulur.
-- **MCU _(Microcontroller Unit)_ :** İşlemci çekirdeği, flash bellek, RAM ve .eşitli çevresel birimleri tekbir çipte barındıran elektronik birim.
-- **Flashing :** Yazılan programın mikrodenetleyici üzerinde çalıştırılması genellikle Flask bellek bölgesine taşınması ile gerçekleştirilir. Bu işlem flashing olarak adlandırılır. probe-rs veya openocd gibi araçlarla yapılır.
+- **Flashing:** Yazılan programın mikrodenetleyici üzerinde çalıştırılması genellikle Flash bellek bölgesine taşınması ile gerçekleştirilir. Bu işlem **flashing** olarak adlandırılır. **probe-rs** veya **openocd** gibi araçlarla yapılır.
 - **GDB _(GNU Debugger)_ :** GNU ekosisteminde yaygın olarak kullanılan debugger.
-- **Bare Metal Programming:** İşletim sistemi olmadan doğrudan donanım üzerinde yazılım geliştirme yaklaşımının adıdır. Yazıda ele aldığımız **BBC micro:bit** gibi cihazlarda **no_std** ile yazılan kodlar bare-metal seviyede olur.
-- **SVD _(System View Description)_:** Mikrodenetleyici üzerindeki register ve ilişkili bitleri tarifleyen bir harita dosyası olarak düşünülebilir. [svd2rust](https://crates.io/crates/svd2rust) gibi crate'ler bu dosyaları parse edebilir ve buda **Peripherals Access Create**'lerin oluşturulmasını kolaylaştırır. Genellikle XML tabanlı bir dosyadır.
-- **Reset Vector:** Mikrodenetleyici yeniden başlatıldığında _(reset)_ çalışmaya başladığı ilk bellek adresidir. Başlangıç kodu da buradan çalıştırılır. Örneklerde attığımız kodlar bu adresten başlatılır.
-- **Debug Probe:** Bilgisayar ile mikrodenetleyici arasındaki fiziksel debug bağlantısını sağlayan araçtır.
-- **PWM _(Pulse With Modulation)_:** PWM, Pulse Width Modulation anlamına gelir ve genellikle analog sinyalleri dijital sinyallere dönüştürmek için kullanılır. Bir sinyalin belirli bir süre boyunca açık kalma süresini (duty cycle) kontrol ederek ortalama bir voltaj değeri oluşturur. Bu değer hoparlör gibi cihazların ses çıkışını kontrol etmek için kullanılabilir. Hatta bir LED parlaklığını kontrol etmek için de kullanılabilir.
+- **GPIO _(General Purpose Input/Output)_ :** Genel amaçlı giriş/çıkış pinleridir. LED yakmak, buton okumak, sensörlerden veri almak vb işlemlerde kullanılır. Hem giriş _(Input)_ hem de çıkış _(output)_ olarak yapılandırılabilir.
+- **HAL _(Hardware Abstraction Layer)_ :** Donanım seviyesindeki enstrümanlarla konuşmayı kolaylaştıran bir arayüz olarak düşünülebilir. Örneğin **GPIO** pinlerine doğrudan erişmek yerine detaylardan uzak ve kolay kullanılabilir bir soyutlama sağlar. Buna göre pin registerlarına doğrudan erişmek yerine **pin.set_high** gibi anlamlı fonksiyonlar sağlar. Bazen BSP ile karıştırılabilir. **nrf52833-hal** küfesi örnek olarak verilebilir. Bu HAL örneğin belli mikrodenetleyicileri hedefler. Birde daha genel soyutlama sağlayan **embedded-hal** gibi küfeler _(crates)_ vardır. Şöyle de düşünebiliriz; **embedded-hal** genel arayüz tanımlamalarını içerir _(traits)_, **nrf52833-hal** ise **nRF52833**'e özel trait'leri gerçekten implemente eder ve dolayısıyla cihaza özgü komutlar da içerebilir.
+- **I2C _(Inter-Integrated Circuit)_:** Bir senkronize seri haberleşme protokolüdür. Veri değiş tokuşu için bir data hattı ve clock line kullanır. Örneğin Microbit kartı üzerinde yer alan **LSM303AGR** bileşeni manyetometre ve ivmeölçer hareket sensörlerini içerir. Bu çip veri iletişimi için **I2C** tabanlı bir arayüz sağlar. Dolayısıyla sensörlerden anlık verileri I2C protokolü üstünden kullanabiliriz.
+- **MCU _(Microcontroller Unit)_ :** İşlemci çekirdeği, flash bellek, RAM ve çeşitli çevresel birimleri tek bir çipte barındıran elektronik birim olarak ifade edilebilir.
+- **PAC _(Peripheral Access Crate)_ :** Mikrodenetleyici üreticisinin sağladığı register haritalarını, API'leri otomatik olarak Rust koduna çeviren paketlerdir. HAL kütüphaneleri genelde PAC modülleri üzerine kurulur.
+- **Peripheral :** Mikrodenetleyicinin içinde bulunan **GPIO**, **UART**, **SPI**, **I2C**, **Timer**, **ADC** gibi birimlerdir. Her biri ayrı bir periferik modül olarak kabul edilir.
+- **PWM _(Pulse Width Modulation)_:** PWM, **Pulse Width Modulation** anlamına gelir ve genellikle analog sinyalleri dijital sinyallere dönüştürmek için kullanılır. Bir sinyalin belirli bir süre boyunca açık kalma süresini _(duty cycle)_ kontrol ederek ortalama bir voltaj değeri oluşturur. Bu değer hoparlör gibi cihazların ses çıkışını kontrol etmek için kullanılabilir. Hatta bir **LED parlaklığını** kontrol etmek için de kullanılabilir.
+- **Reset Vector:** Mikrodenetleyici yeniden başlatıldığında _(reset)_ çalışmaya başladığı ilk bellek adresidir. Başlangıç kodu da buradan çalıştırılır. Örneklerde embed edilen kodlar bu adresten başlatılır.
+- **SPI _(Serial Peripheral Interface)_:** Ağırlıklı olarak yine mikrodenetleyicilerde ele alınan bir senkron ve seri haberleşme standardıdır.
+- **SVD _(System View Description)_:** Mikrodenetleyici üzerindeki **register** ve ilişkili bitleri tarifleyen bir harita dosyası olarak düşünülebilir. **svd2rust** gibi crate'ler bu dosyaları **parse** edebilir ve bu da **Peripherals Access Crate**'lerin oluşturulmasını kolaylaştırır. Genellikle **XML _(eXtensiable Markup Language)_** tabanlı bir dosyadır.
+- **UART _(Universal Asynchronous Receiver-Transmitter)_:** Mikrodenetleyicilerde sensör verilerinin aktarım işlemlerini tanımlayan bir seri iletişim protokoldür. Sadece mikrodenetleyiciler değil bilgisayarlar içinde geçerlidir.
 
 ## Kaynaklar
 
@@ -246,8 +246,9 @@ Beklenen çıktıya göre A düğmesine basılı iken terminal ekranına ivme ar
 - [A Freestanding Rust Binary](https://os.phil-opp.com/freestanding-rust-binary/#panic-implementation)
 - [Ferrous System Embedding Training](https://github.com/ferrous-systems/embedded-trainings-2020)
 - [Microbit Examples](https://github.com/nrf-rs/microbit/tree/03e97a2977d22f768794dd8b0a4b6677a70f119a/examples)
-- [Microbit.org](https://microbit.org/)
+- [Microbit.org Hardware](https://tech.microbit.org/hardware/)
+- [Micro:bit V2 için donanım şeması](https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2.00/MicroBit_V2.0.0_S_schematic.PDF)
 - [The Embedded Rustacean](https://www.theembeddedrustacean.com/)
 - [Embedded programming in Rust with Microbit V2](https://www.youtube.com/watch?v=b7zWIKZp4ls)
-- [Micro:bit V2 için donanım şeması](https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2.00/MicroBit_V2.0.0_S_schematic.PDF)
 - [nRF52833 Product Specification](https://docs-be.nordicsemi.com/bundle/ps_nrf52833/attach/nRF52833_PS_v1.7.pdf?_LANG=enus)
+- [LSM303AGR](https://www.st.com/en/mems-and-sensors/lsm303agr.html)
