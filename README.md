@@ -230,7 +230,7 @@ Beklenen çıktı mikrodenetleyici üzerindeki A butonuna basıldığında sıca
 
 ![Thermometer v1 runtime](./images/MicroBit_11.png)
 
-### Thermometer V2
+### Thermo2
 
 Bu örnekte ortam sıcaklığı üzerinde ısı sensörü bulunan MonkMakes marka board yardımıyla ölçümlemneye çalışılacaktır.
 
@@ -265,7 +265,13 @@ Board ve micro:bit arasındaki bağlantılar aşağıdaki gibidir.
 cargo embed
 ```
 
-// HENÜZ TAMAMLANMADI
+Beklenen çıktı aşağıdakine benzerdir. Test şöyle yapılmıştır. Kartlar bilgisayarın fanına yakın bir yere yerleştirilmiştir. Fana yakın olan MonkMakes sensörünün sıcaklık değerleri zamanla artış göstermiştir.
+
+![External Sensor Temperature](./images/MicroBit_12.png)
+
+Sensörler oda ortamında aynı noktaya yerleştirildiklerinde ise sıcaklık değerleri yakınsamıştır.
+
+![External and Micro Sensor Temperatures](./images/MicroBit_13.png)
 
 ## Mini Sözlük
 
@@ -303,3 +309,4 @@ cargo embed
 - [Embedded programming in Rust with Microbit V2](https://www.youtube.com/watch?v=b7zWIKZp4ls)
 - [nRF52833 Product Specification](https://docs-be.nordicsemi.com/bundle/ps_nrf52833/attach/nRF52833_PS_v1.7.pdf?_LANG=enus)
 - [LSM303AGR](https://www.st.com/en/mems-and-sensors/lsm303agr.html)
+- [MonkMakes Çevre Sensörü için Bilgiler](https://monkmakes.com/mb_2a)
