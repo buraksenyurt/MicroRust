@@ -244,6 +244,23 @@ Board ve micro:bit arasındaki bağlantılar aşağıdaki gibidir.
 |Kırmızı|3V|3V|
 |Sarı|GPIO 1|Isı|
 
+```text
+        [ MonkMakes Sensor ]
+                 |
+      +----------+----------+
+      |          |          |
+     GND        3V        Isı (OUT)
+      |          |          |
+      |          |          |
+      |          |          |
+    [GND]       [3V]     [GPIO1]
+      |          |          |
+      +----------+----------+
+      [    micro:bit v2.2   ]
+      |          |          |
+    Siyah     Kırmızı      Sarı
+```
+
 ```bash
 cargo embed
 ```
@@ -259,6 +276,7 @@ cargo embed
 - **ELF _(Executable and Linkable Format)_ :** Derlenen programın hedef sistemde çalıştırılabilir hale getirildiği dosya formatıdır.
 - **Flashing:** Yazılan programın mikrodenetleyici üzerinde çalıştırılması genellikle Flash bellek bölgesine taşınması ile gerçekleştirilir. Bu işlem **flashing** olarak adlandırılır. **probe-rs** veya **openocd** gibi araçlarla yapılır.
 - **GDB _(GNU Debugger)_ :** GNU ekosisteminde yaygın olarak kullanılan debugger.
+- **GND _(Ground)_:** Devrelerde referans gerilim noktası olarak kullanılan ve bileşenlerin ortak kullandığı topraklama bağlantısıdır. Genellikle **0 Volt** kabul edilir ve sensörler/mikrodenetleyiciler aynı GND hattına bağlanarak çalışırlar _(3.3 volt, 5 Volt gibi)_
 - **GPIO _(General Purpose Input/Output)_ :** Genel amaçlı giriş/çıkış pinleridir. LED yakmak, buton okumak, sensörlerden veri almak vb işlemlerde kullanılır. Hem giriş _(Input)_ hem de çıkış _(output)_ olarak yapılandırılabilir.
 - **HAL _(Hardware Abstraction Layer)_ :** Donanım seviyesindeki enstrümanlarla konuşmayı kolaylaştıran bir arayüz olarak düşünülebilir. Örneğin **GPIO** pinlerine doğrudan erişmek yerine detaylardan uzak ve kolay kullanılabilir bir soyutlama sağlar. Buna göre pin registerlarına doğrudan erişmek yerine **pin.set_high** gibi anlamlı fonksiyonlar sağlar. Bazen BSP ile karıştırılabilir. **nrf52833-hal** küfesi örnek olarak verilebilir. Bu HAL örneğin belli mikrodenetleyicileri hedefler. Birde daha genel soyutlama sağlayan **embedded-hal** gibi küfeler _(crates)_ vardır. Şöyle de düşünebiliriz; **embedded-hal** genel arayüz tanımlamalarını içerir _(traits)_, **nrf52833-hal** ise **nRF52833**'e özel trait'leri gerçekten implemente eder ve dolayısıyla cihaza özgü komutlar da içerebilir.
 - **I2C _(Inter-Integrated Circuit)_:** Bir senkronize seri haberleşme protokolüdür. Veri değiş tokuşu için bir data hattı ve clock line kullanır. Örneğin Microbit kartı üzerinde yer alan **LSM303AGR** bileşeni manyetometre ve ivmeölçer hareket sensörlerini içerir. Bu çip veri iletişimi için **I2C** tabanlı bir arayüz sağlar. Dolayısıyla sensörlerden anlık verileri I2C protokolü üstünden kullanabiliriz.
@@ -267,7 +285,7 @@ cargo embed
 - **Peripheral :** Mikrodenetleyicinin içinde bulunan **GPIO**, **UART**, **SPI**, **I2C**, **Timer**, **ADC** gibi birimlerdir. Her biri ayrı bir periferik modül olarak kabul edilir.
 - **PWM _(Pulse Width Modulation)_:** PWM, **Pulse Width Modulation** anlamına gelir ve genellikle analog sinyalleri dijital sinyallere dönüştürmek için kullanılır. Bir sinyalin belirli bir süre boyunca açık kalma süresini _(duty cycle)_ kontrol ederek ortalama bir voltaj değeri oluşturur. Bu değer hoparlör gibi cihazların ses çıkışını kontrol etmek için kullanılabilir. Hatta bir **LED parlaklığını** kontrol etmek için de kullanılabilir.
 - **Reset Vector:** Mikrodenetleyici yeniden başlatıldığında _(reset)_ çalışmaya başladığı ilk bellek adresidir. Başlangıç kodu da buradan çalıştırılır. Örneklerde embed edilen kodlar bu adresten başlatılır.
-- **SAADC _(Successive Approximation Aanalog-to-Digital Converter)_ :**
+- **SAADC _(Successive Approximation Aanalog-to-Digital Converter)_ :** Analog sinyalleri dijital değerlere dönüştüren ve örnekleme sırasında ardışık yaklaşıklamalar kullanan bir **ADC** türüdür.
 - **SPI _(Serial Peripheral Interface)_:** Ağırlıklı olarak yine mikrodenetleyicilerde ele alınan bir senkron ve seri haberleşme standardıdır.
 - **SVD _(System View Description)_:** Mikrodenetleyici üzerindeki **register** ve ilişkili bitleri tarifleyen bir harita dosyası olarak düşünülebilir. **svd2rust** gibi crate'ler bu dosyaları **parse** edebilir ve bu da **Peripherals Access Crate**'lerin oluşturulmasını kolaylaştırır. Genellikle **XML _(eXtensiable Markup Language)_** tabanlı bir dosyadır.
 - **UART _(Universal Asynchronous Receiver-Transmitter)_:** Mikrodenetleyicilerde sensör verilerinin aktarım işlemlerini tanımlayan bir seri iletişim protokoldür. Sadece mikrodenetleyiciler değil bilgisayarlar içinde geçerlidir.
