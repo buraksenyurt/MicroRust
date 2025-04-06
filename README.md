@@ -18,6 +18,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
       - [Accelerometer](#accelerometer)
       - [Thermometer v1](#thermometer-v1)
       - [Thermo v2](#thermo2)
+      - [Funny Led](#funny-led)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
 
@@ -274,6 +275,14 @@ Beklenen çıktı aşağıdakine benzerdir. Test şöyle yapılmıştır. Kartla
 Sensörler oda ortamında aynı noktaya yerleştirildiklerinde ise sıcaklık değerleri yakınsamıştır.
 
 ![External and Micro Sensor Temperatures](./images/MicroBit_13.png)
+
+### Funny Led
+
+Bu örnekte amaç kare, kalp, yukarı ok ve aşağı ok şekillerini LED matriste HAL kütüphanelerini kullanarak göstermektir.
+
+```bash
+cargo embed
+```
 
 ## Mini Sözlük
 
