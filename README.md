@@ -16,6 +16,8 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
       - [Uart](#uart)
       - [Server](#server)
       - [Accelerometer](#accelerometer)
+      - [Thermometer v1](#thermometer-v1)
+      - [Thermo v2](#thermo2)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
 
