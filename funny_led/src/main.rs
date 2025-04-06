@@ -18,6 +18,9 @@ fn main() -> ! {
         get(Shape::Hearth),
         get(Shape::UpArrow),
         get(Shape::DownArrow),
+        get(Shape::X),
+        get(Shape::Checkmark),
+        get(Shape::Forbidden)
     ];
     let mut current_shape = 0;
 
