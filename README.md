@@ -19,6 +19,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
       - [Thermometer v1](#thermometer-v1)
       - [Thermo v2](#thermo2)
       - [Funny Led](#funny-led)
+      - [Thermo Digits](#thermo-digits)
     - [Mini Sözlük](#mini-sözlük)
     - [Kaynaklar](#kaynaklar)
 
@@ -279,6 +280,14 @@ Sensörler oda ortamında aynı noktaya yerleştirildiklerinde ise sıcaklık de
 ### Funny Led
 
 Bu örnekte amaç kare, kalp, yukarı ok ve aşağı ok şekillerini LED matriste HAL kütüphanelerini kullanarak göstermektir.
+
+```bash
+cargo embed
+```
+
+### Thermo Digits
+
+Thermo2 uygulamasının farklı bir versiyonudur. Isı değerleri LED matris ekranında kayan sayılar şeklinde gösterilir.
 
 ```bash
 cargo embed
