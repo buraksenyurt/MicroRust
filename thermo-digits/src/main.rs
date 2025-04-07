@@ -1,10 +1,12 @@
 #![no_std]
 #![no_main]
 
+mod constants;
 mod led_matrix;
 mod panel;
 mod utility;
 
+use crate::constants::*;
 use crate::led_matrix::LedMatrix;
 use crate::utility::*;
 use cortex_m::asm::nop;
@@ -12,10 +14,6 @@ use cortex_m_rt::entry;
 use nrf52833_pac::Peripherals;
 use panic_rtt_target as _;
 use rtt_target::{rprintln, rtt_init_print};
-
-const A: f32 = 18.0;
-const B: f32 = 115.0;
-const C: f32 = -54.0;
 
 #[entry]
 fn main() -> ! {
@@ -87,9 +85,9 @@ fn main() -> ! {
 
         let bitmap = text_to_bitmap(text);
 
-        scroll_text(&mut matrix, &bitmap, 4 * 4);
+        scroll_text(&mut matrix, &bitmap, SCROLL_WIDTH);
 
-        for _ in 0..(400_000 * 2) {
+        for _ in 0..(DELAY_FACTOR * 2) {
             // Yaklaşık 2 saniyelik gecikleme süresi
             nop();
         }

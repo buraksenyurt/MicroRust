@@ -1,3 +1,4 @@
+use crate::constants::{LED_ROW_LENGTH, TOTAL_TEXT_COLUMN};
 use crate::led_matrix::LedMatrix;
 use crate::panel::*;
 /*
@@ -6,24 +7,24 @@ use crate::panel::*;
 
     text_to_bitmap: Verilen metni 5x5'lik bir bitmap dizisine dönüştürür.
     scroll_text: Bitmap dizisini LED matrisinde kaydırarak gösterir.
-    float_to_ascii: Float türünde bir sayıyı(örneği 18.7 gibi bir ısı değerini) 
+    float_to_ascii: Float türünde bir sayıyı(örneği 18.7 gibi bir ısı değerini)
     ASCII karakter dizisine dönüştürür.
 */
 
-pub fn text_to_bitmap(text: &str) -> [[u8; 64]; 5] {
-    let mut bitmap = [[0u8; 64]; 5];
+pub fn text_to_bitmap(text: &str) -> [[u8; TOTAL_TEXT_COLUMN]; 5] {
+    let mut bitmap = [[0u8; TOTAL_TEXT_COLUMN]; 5];
     let mut col_index = 0;
 
     /*
         LED Matris için parametre olarak gelen metni 5x5'lik bitmap dizisine metni dönüştürürken
         , her karakterin 5 satır ve 3 sütunluk bir alana yerleştirildiğini varsayıyoruz.
-        
+
         Bu nedenle, her karakter için 4 sütun (3 sütun karakter + 1 boşluk)
         ayırıyoruz. Toplamda 64 sütun olduğu için, metin uzunluğu 64'ü geçerse döngüden çıkıyoruz.
 
     */
     for c in text.chars() {
-        if col_index >= 64 {
+        if col_index >= TOTAL_TEXT_COLUMN {
             break;
         }
 
@@ -39,7 +40,7 @@ pub fn text_to_bitmap(text: &str) -> [[u8; 64]; 5] {
                 col_index += 4;
             }
             '.' => {
-                for row in 0..5 {
+                for row in 0..LED_ROW_LENGTH {
                     bitmap[row][col_index] = DOT[row][0];
                 }
                 col_index += 2;
@@ -73,7 +74,11 @@ pub fn float_to_ascii(f: f32) -> [u8; 5] {
     bitmap dizisini kullanark, her kaydırma adımında yeni bir frame oluşturulur ve
     bu frame matris üzerinde gösterilir.
 */
-pub fn scroll_text(matrix: &mut LedMatrix, bitmap: &[[u8; 64]; 5], total_width: usize) {
+pub fn scroll_text(
+    matrix: &mut LedMatrix,
+    bitmap: &[[u8; TOTAL_TEXT_COLUMN]; 5],
+    total_width: usize,
+) {
     for offset in 0..=(total_width - 5) {
         let mut frame = [[0u8; 5]; 5];
 

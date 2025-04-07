@@ -8,7 +8,6 @@
     Ayrıca virgüllü sayılar için nokta karakteri de kullanılır.
 */
 pub const DIGITS: [[[u8; 3]; 5]; 10] = [
-    
     // 0
     [[1, 1, 1], [1, 0, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]],
     // 1

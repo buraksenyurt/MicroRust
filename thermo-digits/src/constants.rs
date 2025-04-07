@@ -1,0 +1,11 @@
+pub const A: f32 = 18.0;
+pub const B: f32 = 115.0;
+pub const C: f32 = -54.0;
+pub const SCROLL_WIDTH: usize = 4 * 4;
+pub const DELAY_FACTOR: usize = 400_000;
+pub const LED_ROW_LENGTH: usize = 5;
+pub const LED_COL_LENGTH: usize = 5;
+pub const DRAW_DELAY: u32 = 500;
+pub const LIGHT_ON: u8 = 1;
+pub const FRAME_FACTOR: u32 = 5;
+pub const TOTAL_TEXT_COLUMN: usize = 64;
