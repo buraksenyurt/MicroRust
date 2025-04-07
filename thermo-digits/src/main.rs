@@ -11,7 +11,7 @@ use crate::led_matrix::LedMatrix;
 use crate::utility::*;
 use cortex_m::asm::nop;
 use cortex_m_rt::entry;
-use nrf52833_pac::Peripherals;
+use nrf52833_hal::pac::Peripherals;
 use panic_rtt_target as _;
 use rtt_target::{rprintln, rtt_init_print};
 
