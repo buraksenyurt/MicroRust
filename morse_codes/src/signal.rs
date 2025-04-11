@@ -1,3 +1,4 @@
+use crate::coder::Coder;
 use crate::constants::{DASH_DURATION, DOT_DURATION, ELEMENT_GAP};
 use crate::timer::delay;
 use nrf52833_pac::Peripherals;
@@ -26,5 +27,17 @@ impl Signal {
         // Turn OFF
         p.P0.outclr.write(|w| unsafe { w.bits(1 << 2) }); // P0.02 LOW
         delay(ELEMENT_GAP);
+    }
+
+    pub fn send_letter(p: &Peripherals, letter: &str) {
+        let code = Coder::get_letter_code(letter);
+        rprintln!("{} = {}", letter, code);
+        for c in code.chars() {
+            if c == '.' {
+                Self::send_dot(p)
+            } else if c == '-' {
+                Self::send_dash(p)
+            }
+        }
     }
 }
