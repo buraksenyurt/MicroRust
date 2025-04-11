@@ -21,6 +21,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
             - [Funny Led](#funny-led)
             - [Thermo Digits](#thermo-digits)
             - [Lighthouse](#lighthouse)
+            - [Morse Codes](#morse-codes)
         - [Mini Sözlük](#mini-sözlük)
         - [Kaynaklar](#kaynaklar)
 
@@ -333,7 +334,7 @@ Enstrümanlar arası bağlantılar yine timsah klipsler ile gerçekleştiriliyor
 | Siyah        | GND       | GND   |      |              |
 | Sarı         | GPIO 0    | IN    |      |              |
 | Sarı         |           | OUT   | 2V   |              |
-| Kırmızı      |           | OUT   |      | + Kutup      |   
+| Kırmızı      |           | OUT   |      | + Kutup      |
 | Yeşil        |           |       | 1V   | - Kutup      |
 
 Monkmakes resmi dokümanlarında için çalışan basit bir Python kodu da mevcut.
@@ -359,6 +360,24 @@ Işık açık iken.
 ![Lights On](./images/MicroBit_15.png)
 
 Mücadele; projeyi rust kodları ile geliştirmek.
+
+### Morse Codes
+
+Bu örnekte Lighthouse projesindeki düzenek kullanılarak mors kodlarına göre sinyal yayınlaması sağlanmakta. Örnekte sadece HELLO kelimesini kullanıyoruz.
+
+| Harf | Mors Kodu  |
+|------|------------|
+| H    |.-          |
+| E    |.           |
+| L    |.-..        |
+| L    |.-..        |
+| O    |- - -       |
+
+Örneği cihaza almak için;
+
+```bash
+cargo embed
+```
 
 ## Mini Sözlük
 
