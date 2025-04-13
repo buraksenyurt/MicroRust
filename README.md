@@ -22,6 +22,7 @@ Bu repoda mikrodenetleyiciler üzerinde Rust ile kodlama pratiklerine yer verilm
             - [Thermo Digits](#thermo-digits)
             - [Lighthouse](#lighthouse)
             - [Morse Codes](#morse-codes)
+            - [Motion Sensor](#motion-sensor)
         - [Mini Sözlük](#mini-sözlük)
         - [Kaynaklar](#kaynaklar)
 
@@ -343,10 +344,11 @@ Monkmakes resmi dokümanlarında için çalışan basit bir Python kodu da mevcu
 from microbit import *
 
 while True:
-pin0.write_digital(1)
-sleep(1000)
-pin0.write_digital(0)
-sleep(2000)
+    pin0.write_digital(1)
+    sleep(1000)
+    pin0.write_digital(0)
+    sleep(2000)
+
 ```
 
 Düzeneğin çalışma zamanı ise aşağıdaki gibi.
@@ -363,21 +365,52 @@ Mücadele; projeyi rust kodları ile geliştirmek.
 
 ### Morse Codes
 
-Bu örnekte Lighthouse projesindeki düzenek kullanılarak mors kodlarına göre sinyal yayınlaması sağlanmakta. Örnekte sadece HELLO kelimesini kullanıyoruz.
+Bu örnekte Lighthouse projesindeki düzenek kullanılarak mors kodlarına göre sinyal yayınlaması sağlanmakta. Örnekte
+sadece HELLO kelimesini kullanıyoruz.
 
-| Harf | Mors Kodu  |
-|------|------------|
-| H    |.-          |
-| E    |.           |
-| L    |.-..        |
-| L    |.-..        |
-| O    |- - -       |
+| Harf | Mors Kodu |
+|------|-----------|
+| H    | .-        |
+| E    | .         |
+| L    | .-..      |
+| L    | .-..      |
+| O    | - - -     |
 
 Örneği cihaza almak için;
 
 ```bash
 cargo embed
 ```
+
+### Motion Sensor
+
+Projedeki ilk amaç Micro:Bit'e haricen bağlanan speaker sensor'e ses sinyali gönderilmesini sağlamaktır. Eğer mümkün
+olursa harekete duyarlı bir alarm mekanizması kullanılmaya çalışılacaktır.
+
+![Speaker Sensor](images/MicroBit_16.png)
+
+| Timsah Klips | Micro:bit | Speaker Sensor |
+|--------------|-----------|----------------|
+| Siyah        | GND       | GND            |
+| Kırmızı      | 3V        | 3V             |
+| Sarı         | GPIO 1    | Input          |
+
+Mücadeledeki zorluklar;
+
+1- Harekete duyarlı bir alarm mekanizması kodları MicroPython'a göre aşağıdaki kadar basittir.
+
+```python
+from microbit import *
+import music
+
+z=accelerometer.get_z()
+
+while True:
+    if accelerometer.get_z() < z -50:
+        music.play(music.BA_DING)
+```
+
+2- Nota bazlı ses elde etmek için sesin frekansına göre kare sinyalleri doğru şekilde gönderebilmek gerekiyor.
 
 ## Mini Sözlük
 
