@@ -1,7 +1,7 @@
 pub const DOT_DURATION: u32 = 100_000;
 pub const DASH_DURATION: u32 = DOT_DURATION * 3;
 pub const ELEMENT_GAP: u32 = DOT_DURATION;
-pub const LETTER_GAP: u32 = DOT_DURATION * 3;
+// pub const LETTER_GAP: u32 = DOT_DURATION * 3;
 pub const WORD_GAP: u32 = DOT_DURATION * 7;
 
 pub const LETTER_MAP: [(&str, &str); 26] = [

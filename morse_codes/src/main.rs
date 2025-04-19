@@ -1,12 +1,12 @@
 #![no_std]
 #![no_main]
 
-mod coder;
-mod constants;
-mod signal;
-mod timer;
+pub mod coder;
+pub mod constants;
+pub mod signal;
+pub mod timer;
 
-use crate::constants::{LETTER_GAP, WORD_GAP};
+use crate::constants::WORD_GAP;
 use crate::signal::Signal;
 use crate::timer::delay;
 use cortex_m_rt::entry;
