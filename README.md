@@ -42,9 +42,9 @@ programlama yapılabileceği gibi **C** ve **Rust** gibi dillerle de geliştirme
 Bu repodaki örnekler **BBC Micro:bit v2.2** üzerinde geliştirilmektedir. **ARM** tabanlı **Cortex** işlemciye _(
 nRF52833, Nordic Semiconductor)_ sahip olan cihaz **512 Kb Flash** ve **128 Kb Ram** belleğe sahiptir.
 
-![Micro:bit 00](./images/MicroBit_00.jpg)
+![Micro:bit 00](images/MicroBit_00.jpg)
 
-![Micro:bit 01](./images/MicroBit_01.jpg)
+![Micro:bit 01](images/MicroBit_01.jpg)
 
 - Doğrudan Microcontroller Unit üzerinde programlama yaparken kartın donanım şema bilgilerine ihtiyaç
   duyulacaktır. [Kaynak](https://github.com/microbit-foundation/microbit-v2-hardware/blob/main/V2.00/MicroBit_V2.0.0_S_schematic.PDF)
@@ -57,7 +57,7 @@ cihaz gibi de algılanır.
 mode
 ```
 
-![COM3 Status](./images/MicroBit_02.png)
+![COM3 Status](images/MicroBit_02.png)
 
 ## Gerekli Kurulumlar
 
